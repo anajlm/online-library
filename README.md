@@ -17,6 +17,14 @@ Online Library API with Java Spring Boot
 
 ## Technologies Used
 
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Lombok
+- PostgreSQL
+- Maven
+
+
 ## Technical Implementation
 
 ## Usage
