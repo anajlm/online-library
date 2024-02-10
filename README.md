@@ -4,7 +4,7 @@ Online Library API with Java Spring Boot
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
-- -[Technologies Used](#technologies-used)
+- [Technologies Used](#technologies-used)
 - [Technical Implementation](#technical-implementation)
 - [Usage](#usage)
 - [Dependencies](#dependencies)
@@ -16,6 +16,8 @@ Online Library API with Java Spring Boot
 ## Features
 
 ## Technologies Used
+
+## Technical Implementation
 
 ## Usage
 
