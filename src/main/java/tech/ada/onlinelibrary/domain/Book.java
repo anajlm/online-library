@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tech.ada.onlinelibrary.domain.enums.Genre;
 
 
 @Entity
@@ -14,5 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Book {
 
+    private Long id;
+    private Genre genre;
 
 }
