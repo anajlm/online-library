@@ -2,19 +2,15 @@ package tech.ada.onlinelibrary.domain.enums;
 
 public enum Genre {
     FICTION,
-    NON_FICTION,
-    MYSTERY,
     ROMANCE,
-    THRILLER,
+    MYSTERY,
     FANTASY,
     SCIENCE_FICTION,
     HORROR,
-    BIOGRAPHY,
-    HISTORY,
-    SELF_HELP,
-    POETRY,
-    DRAMA,
-    COMEDY,
-    CHILDREN,
-    YOUNG_ADULT;
+    THRILLER,
+    HISTORICAL_FICTION,
+    ADVENTURE,
+    NON_FICTION,
+    TECHNICAL
 }
+

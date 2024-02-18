@@ -1,44 +1,24 @@
-package tech.ada.onlinelibrary.domain;
+package tech.ada.onlinelibrary.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import tech.ada.onlinelibrary.domain.enums.Genre;
 
 import java.time.Year;
+import java.util.Objects;
 
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Book {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class BookPostRequest {
 
     private String title;
-
     private String author;
-
-    private Genre genre;
-
+    private  Genre genre;
     private String publisher;
-
     private Year publicationYear;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public BookPostRequest(String title, String author, Genre genre, String publisher, Year publicationYear) {
+        this.title = Objects.requireNonNull(title, "Titulo é obrigatorio");
+        this.author = Objects.requireNonNull(author);
+        this.genre = Objects.requireNonNull(genre);
+        this.publisher = Objects.requireNonNull(publisher);
+        this.publicationYear = Objects.requireNonNull(publicationYear);
     }
 
     public String getTitle() {

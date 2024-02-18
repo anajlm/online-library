@@ -1,0 +1,34 @@
+---- Create the Publishers table
+--CREATE TABLE Publishers (
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR(255) NOT NULL,
+--    address VARCHAR(255)
+--);
+--
+--
+---- Create the Genres table
+--CREATE TABLE Genres (
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR(255) NOT NULL
+--);
+--
+---- Create the Authors table
+--CREATE TABLE Authors (
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR(255) NOT NULL,
+--    biography TEXT
+--);
+
+---- Create the Books table
+--CREATE TABLE Books (
+--    id SERIAL PRIMARY KEY,
+--    title VARCHAR(255) NOT NULL,
+--    author_id BIGINT REFERENCES Authors(id),
+--    genre_id BIGINT REFERENCES Genres(id),
+--    publisher_id BIGINT REFERENCES Publishers(id),
+--    isbn VARCHAR(20),
+--    publication_year INTEGER
+--    FOREIGN KEY (genre_id) REFERENCES Genres(id),
+--    FOREIGN KEY (author_id) REFERENCES Authors(id),
+--    FOREIGN KEY (publisher_id) REFERENCES Publishers(id)
+--);
