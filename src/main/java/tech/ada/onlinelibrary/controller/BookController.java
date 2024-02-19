@@ -28,7 +28,7 @@ public class BookController {
     }
 
 
-    @GetMapping(value = "/library", params = {"title"})
+    @GetMapping(value = "/library/books", params = {"title"})
     public ResponseEntity<List<Book>> getBooksByTitle(@RequestParam String title){
         return ResponseEntity.ok(bookRepository.findByTitleContainingIgnoreCase(title));
     }
@@ -36,14 +36,14 @@ public class BookController {
     //GET Retrieve book by author.
     //GET Retrieve book by genre.
 
-    @PostMapping("/library")
+    @PostMapping("/library/books")
     public ResponseEntity<Book> createBook(@RequestBody BookPostRequest bookRequest){
         Book book = modelMapper.map(bookRequest, Book.class);
         Book newBook = bookRepository.save(book);
         return ResponseEntity.status(HttpStatus.CREATED).body(newBook);
     }
 
-    @DeleteMapping("/library/{id}")
+    @DeleteMapping("/library/books/{id}")
     public ResponseEntity<Book> deleteBook(@PathVariable Long id){
         Optional<Book> optionalBook = bookRepository.findById(id);
         if(optionalBook.isPresent()){
