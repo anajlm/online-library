@@ -9,12 +9,12 @@ public class BookPostRequest {
 
     private String title;
     private String author;
-    private  Genre genre;
+    private Genre genre;
     private String publisher;
     private Year publicationYear;
 
     public BookPostRequest(String title, String author, Genre genre, String publisher, Year publicationYear) {
-        this.title = Objects.requireNonNull(title, "Titulo é obrigatorio");
+        this.title = Objects.requireNonNull(title);
         this.author = Objects.requireNonNull(author);
         this.genre = Objects.requireNonNull(genre);
         this.publisher = Objects.requireNonNull(publisher);
