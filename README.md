@@ -35,8 +35,6 @@ Base URL for each request is `https://localhost:8080/online-library/api`, so com
 
 | Link          | HTTP Method   | Description                                        | 
 | ------------- | ------------- | -------------------------------------------------  |
-| `/users`      | GET           | Retrieve the list of all users.                    |
-| `/users/{id}` | GET           | Retrieve specific user with provided `{id}`.    |
 | `/users`      | POST          | Add new user to the database.                      |
 | `/users/{id}` | PUT           | Update specific user's (`{id}`) fields.           |
 | `/users/{id}` | DELETE        | Delete from the database user with provided `{id}`. |
@@ -47,27 +45,24 @@ Base URL for each request is `https://localhost:8080/online-library/api`, so com
 | Link          | HTTP Method   | Description                                        | 
 | ------------- | ------------- | -------------------------------------------------  |
 | `/books`      | GET           | Retrieve the list of all books.                    |
-| `/books/{id}` | GET           | Retrieve specific book with provided `{id}`.    	|
-| `/books/{id}` | DELETE         | Delete from the database book with provided `{id}`.    	|
+| `/books`      | GET           | Retrieve book by title.                            |
+| `/books`      | GET           | Retrieve book by author.                           |
+| `/books`      | GET           | Retrieve book by genre.    	                |
+| `/books`      | POST          | Add new book to the database.   	                |
+| `/books/{id}` | DELETE        | Delete book from the database with provided `{id}`.|
 
 
 ### Borrowed
 
 | Link          | HTTP Method   | Description                                        | 
 | ------------- | ------------- | -------------------------------------------------  |
-| `/borrowed`     | GET         | Retrieve the list of all borrowed books.             |
-| `/borrowed/{id}`| GET         | Retrieve specific borrowed book with provided `{id}`.    |
-| `/borrowed/users/{userId}`   | GET         | Retrieve list of borrowed books that are assigned to the user `{userId}`. |
+| `/loans`      | GET           | Retrieve the list of all loans.                    |
+| `/loans/{userId}`| GET         | Retrieve list of borrowed books that are assigned to the user. |
+| `/loans`   | POST         | Add new loan to the database.                          |
+| `/loans/{id}`   | DELETE         | Delete loan from the database with provided id. |
 
 
-### Reserved
 
-| Link          | HTTP Method   | Description                                        | 
-| ------------- | ------------- | -------------------------------------------------  |
-| `/reserved`     | GET         | Retrieve the list of all reservations.             |
-| `/reserved/{id}`| GET         | Retrieve specific reservation with provided `{id}`.    |
-| `/reserved/users/{userId}`   | GET         | Retrieve list of reservations that are assigned to the user `{userId}`. |
-| `/reserved/books/{bookId}`   | GET         | Retrieve reservation resource that is assigned to the book `{bookId}`.|
 
 ## Dependencies 
 
