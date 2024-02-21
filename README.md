@@ -71,7 +71,7 @@ The project does not have any external dependencies.
 
 ## Contributing
 
-If you'd like to contribute to Online Library, please fork the repository, create new branch, make your changes, and submit a pull request.
+If you'd like to contribute to Online Library, please fork the repository, create a new branch, make your changes, and submit a pull request.
 
 ## License
 
