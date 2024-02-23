@@ -45,11 +45,11 @@ public class LoanController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newLoan);
     }
 
-    @DeleteMapping(value = "/library/loans", params = {"userId"})
-    public ResponseEntity<Loan> deleteLoan(@PathVariable Long userId){
-        Optional<Loan> optionalLoan = loanRepository.findById(userId);
+    @DeleteMapping(value = "/library/loans/{id}")
+    public ResponseEntity<Loan> deleteLoan(@PathVariable Long id){
+        Optional<Loan> optionalLoan = loanRepository.findById(id);
         if (optionalLoan.isPresent()){
-            loanRepository.deleteById(userId);
+            loanRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         } else  {
             return ResponseEntity.notFound().build();
