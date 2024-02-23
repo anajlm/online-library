@@ -26,8 +26,4 @@ public class User {
     private String userPassword;
     private String email;
 
-    @OneToMany//(mappedBy = "user", cascade = CascadeType.REMOVE)
-    //@JsonIgnoreProperties("user")
-    private List<Loan> loans;
-
 }
