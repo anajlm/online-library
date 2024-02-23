@@ -14,7 +14,7 @@ public class LoanPostRequest {
     private LocalDate returnDate;
 
     public LoanPostRequest(Long userId, LocalDate loanDate, LocalDate returnDate) {
-        this.userId = Objects.requireNonNull(userId, "Titulo é obrigatorio");
+        this.userId = Objects.requireNonNull(userId);
         this.loanDate = Objects.requireNonNull(loanDate);
         this.returnDate = Objects.requireNonNull(returnDate);
     }
