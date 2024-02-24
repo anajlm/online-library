@@ -28,7 +28,9 @@ public class Loan {
 
     private LocalDate loanDate;
 
-    private LocalDate returnDate;
+    private LocalDate scheduledReturnDate;
+
+    private LocalDate realReturnDate;
 
 
     public Long getId() {
@@ -56,10 +58,10 @@ public class Loan {
     }
 
     public LocalDate getReturnDate() {
-        return returnDate;
+        return scheduledReturnDate;
     }
 
     public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
+        this.scheduledReturnDate = returnDate;
     }
 }
