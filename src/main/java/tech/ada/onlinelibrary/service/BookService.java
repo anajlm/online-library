@@ -4,7 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.ada.onlinelibrary.domain.Book;
-import tech.ada.onlinelibrary.dto.BookPostRequest;
+import tech.ada.onlinelibrary.dto.CreateBookRequest;
+import tech.ada.onlinelibrary.exception.BookNotFoundException;
 import tech.ada.onlinelibrary.repository.BookRepository;
 
 import java.util.List;
@@ -26,16 +27,17 @@ public class BookService {
         return bookRepository.findByTitleContainingIgnoreCase(title);
     }
 
-    public Book createBook(BookPostRequest bookRequest) {
+    public Book createBook(CreateBookRequest bookRequest) {
         Book book = modelMapper.map(bookRequest, Book.class);
         return bookRepository.save(book);
     }
 
-    public Optional<Book> getBookById(Long id) {
-        return bookRepository.findById(id);
+    public Book getBookById(Long id) {
+        return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
     }
 
     public void deleteBook(Long id) {
+        getBookById(id);
         bookRepository.deleteById(id);
     }
 

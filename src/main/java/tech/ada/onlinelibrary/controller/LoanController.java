@@ -5,10 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.ada.onlinelibrary.domain.Book;
 import tech.ada.onlinelibrary.domain.Loan;
-import tech.ada.onlinelibrary.dto.BookPostRequest;
-import tech.ada.onlinelibrary.dto.LoanPostRequest;
+import tech.ada.onlinelibrary.dto.CreateLoanRequest;
 import tech.ada.onlinelibrary.repository.LoanRepository;
 
 import java.util.List;
@@ -39,7 +37,7 @@ public class LoanController {
     }
 
     @PostMapping("/library/loans")
-    public ResponseEntity<Loan> createLoan(@RequestBody LoanPostRequest loanRequest){
+    public ResponseEntity<Loan> createLoan(@RequestBody CreateLoanRequest loanRequest){
         Loan loan = modelMapper.map(loanRequest, Loan.class);
         Loan newLoan = loanRepository.save(loan);
         return ResponseEntity.status(HttpStatus.CREATED).body(newLoan);

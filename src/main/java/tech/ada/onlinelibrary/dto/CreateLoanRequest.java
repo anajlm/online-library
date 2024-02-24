@@ -1,19 +1,16 @@
 package tech.ada.onlinelibrary.dto;
 
 
-import tech.ada.onlinelibrary.domain.enums.Genre;
-
 import java.time.LocalDate;
-import java.time.Year;
 import java.util.Objects;
 
-public class LoanPostRequest {
+public class CreateLoanRequest {
 
     private Long userId;
     private LocalDate loanDate;
     private LocalDate returnDate;
 
-    public LoanPostRequest(Long userId, LocalDate loanDate, LocalDate returnDate) {
+    public CreateLoanRequest(Long userId, LocalDate loanDate, LocalDate returnDate) {
         this.userId = Objects.requireNonNull(userId);
         this.loanDate = Objects.requireNonNull(loanDate);
         this.returnDate = Objects.requireNonNull(returnDate);
