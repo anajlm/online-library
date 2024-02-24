@@ -3,8 +3,6 @@ package tech.ada.onlinelibrary.advice;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 
-
-@AllArgsConstructor
 public class ErrorResponse {
 
     private HttpStatus status;

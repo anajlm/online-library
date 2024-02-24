@@ -12,6 +12,7 @@ import tech.ada.onlinelibrary.dto.LoanPostRequest;
 import tech.ada.onlinelibrary.repository.LoanRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class LoanController {
@@ -42,6 +43,18 @@ public class LoanController {
         Loan loan = modelMapper.map(loanRequest, Loan.class);
         Loan newLoan = loanRepository.save(loan);
         return ResponseEntity.status(HttpStatus.CREATED).body(newLoan);
+    }
+
+    @DeleteMapping(value = "/library/loans/{id}")
+    public ResponseEntity<Loan> deleteLoan(@PathVariable Long id){
+        Optional<Loan> optionalLoan = loanRepository.findById(id);
+        if (optionalLoan.isPresent()){
+            loanRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else  {
+            return ResponseEntity.notFound().build();
+
+        }
     }
 
 
