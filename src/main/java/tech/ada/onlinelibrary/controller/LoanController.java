@@ -10,6 +10,7 @@ import tech.ada.onlinelibrary.domain.Loan;
 import tech.ada.onlinelibrary.dto.BookPostRequest;
 import tech.ada.onlinelibrary.dto.LoanPostRequest;
 import tech.ada.onlinelibrary.repository.LoanRepository;
+import tech.ada.onlinelibrary.service.LoanService;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,10 +21,27 @@ public class LoanController {
     private LoanRepository loanRepository;
     private ModelMapper modelMapper;
 
+    private LoanService loanService;
+
     @Autowired
     public LoanController(LoanRepository loanRepository, ModelMapper modelMapper){
         this.loanRepository = loanRepository;
         this.modelMapper = modelMapper;
+    }
+
+
+    @PostMapping("/library/loans")
+    public ResponseEntity<List<Loan>> newLoan(@RequestBody Loan loan) {
+        Long userId = loan.getId();
+
+        boolean isAuthorized = loanService.checkLoanAuthorization(userId);
+
+        if (isAuthorized) {
+            loanService.createLoan(loan);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
     }
 
     @GetMapping("/library/loans")
@@ -36,6 +54,25 @@ public class LoanController {
     public ResponseEntity<List<Loan>> getLoansByUserId(@RequestParam Long userId){
         List<Loan> loans = loanRepository.findByUserId(userId);
         return ResponseEntity.ok(loans);
+    }
+
+
+    @GetMapping(value = "/library/loans", params = {"title"})
+    public ResponseEntity<List<Loan>> getLoansByTitle(@RequestParam String title) {
+        List<Loan> loans1 = loanRepository.findByTitle(title);
+        return ResponseEntity.ok(loans1);
+    }
+
+    @GetMapping(value = "/library/loans", params = {"author"})
+    public ResponseEntity<List<Loan>> getLoansByAuthor(@RequestParam String author) {
+        List<Loan> loans2 = loanRepository.findByAuthor(author);
+        return ResponseEntity.ok(loans2);
+    }
+
+    @GetMapping(value = "/library/loans", params = {"genre"})
+    public ResponseEntity<List<Loan>> getLoansByGenre(@RequestParam String genre) {
+        List<Loan> loans3 = loanRepository.findByGenre(genre);
+        return ResponseEntity.ok(loans3);
     }
 
     @PostMapping("/library/loans")
