@@ -11,12 +11,12 @@ public class LoanPostRequest {
 
     private Long userId;
     private LocalDate loanDate;
-    private LocalDate returnDate;
+    private LocalDate scheduledReturnDate;
 
     public LoanPostRequest(Long userId, LocalDate loanDate, LocalDate returnDate) {
         this.userId = Objects.requireNonNull(userId);
         this.loanDate = Objects.requireNonNull(loanDate);
-        this.returnDate = Objects.requireNonNull(returnDate);
+        this.scheduledReturnDate = Objects.requireNonNull(returnDate);
     }
 
 
@@ -37,10 +37,10 @@ public class LoanPostRequest {
     }
 
     public LocalDate getReturnDate() {
-        return returnDate;
+        return scheduledReturnDate;
     }
 
     public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
+        this.scheduledReturnDate = returnDate;
     }
 }
