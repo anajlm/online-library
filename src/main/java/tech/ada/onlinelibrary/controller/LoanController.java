@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.onlinelibrary.domain.Loan;
-import tech.ada.onlinelibrary.dto.CreateLoanRequest;
 import tech.ada.onlinelibrary.repository.LoanRepository;
 
 import java.util.List;

@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.onlinelibrary.domain.User;
-import tech.ada.onlinelibrary.dto.CreateUserRequest;
 import tech.ada.onlinelibrary.repository.UserRepository;
 import tech.ada.onlinelibrary.service.UserService;
 
