@@ -9,7 +9,182 @@
 	"item": [
 		{
 			"name": "Users",
-			"item": []
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/library/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"library",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"teste2\",\n    \"userPassword\": \"1234\",\n    \"email\": \"teste2@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/library/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"library",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"teste2\",\n    \"userPassword\": \"1234\",\n    \"email\": \"teste2@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/library/user/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"library",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"teste2\",\n    \"userPassword\": \"1234\",\n    \"email\": \"teste2@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/library/user/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"library",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get loans",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Book",
@@ -99,7 +274,82 @@
 					"response": []
 				},
 				{
+					"name": "Get all books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/library/books?title=Clean Code: A Handbook of Agile Software Craftsmanship",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"library",
+								"books"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Clean Code: A Handbook of Agile Software Craftsmanship"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get book by title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/library/books?title=Clean Code: A Handbook of Agile Software Craftsmanship",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"library",
+								"books"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Clean Code: A Handbook of Agile Software Craftsmanship"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get book by author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/library/books?title=Clean Code: A Handbook of Agile Software Craftsmanship",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"library",
+								"books"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Clean Code: A Handbook of Agile Software Craftsmanship"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get book by genre",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -186,6 +436,49 @@
 					"request": {
 						"method": "POST",
 						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Return loan",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Request",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/library/loans/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"library",
+								"loans",
+								"2"
+							]
+						}
 					},
 					"response": []
 				}
