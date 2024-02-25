@@ -19,7 +19,9 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //private Book book;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
     @ManyToOne
     private User user;
@@ -29,6 +31,9 @@ public class Loan {
     private LocalDate scheduledReturnDate;
 
     private LocalDate realReturnDate;
+
+
+
 
     public Long getId() {
         return id;
@@ -44,6 +49,14 @@ public class Loan {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public LocalDate getLoanDate() {

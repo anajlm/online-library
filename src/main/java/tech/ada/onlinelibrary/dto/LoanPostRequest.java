@@ -1,6 +1,8 @@
 package tech.ada.onlinelibrary.dto;
 
 
+import tech.ada.onlinelibrary.domain.Book;
+import tech.ada.onlinelibrary.domain.User;
 import tech.ada.onlinelibrary.domain.enums.Genre;
 
 import java.time.LocalDate;
@@ -10,15 +12,12 @@ import java.util.Objects;
 public class LoanPostRequest {
 
     private Long userId;
-    private LocalDate loanDate;
-    private LocalDate scheduledReturnDate;
+    private Long bookId;
 
-    public LoanPostRequest(Long userId, LocalDate loanDate, LocalDate returnDate) {
+    public LoanPostRequest(Long userId, Long bookId) {
         this.userId = Objects.requireNonNull(userId);
-        this.loanDate = Objects.requireNonNull(loanDate);
-        this.scheduledReturnDate = Objects.requireNonNull(returnDate);
+        this.bookId = Objects.requireNonNull(bookId);
     }
-
 
     public Long getUserId() {
         return userId;
@@ -28,19 +27,13 @@ public class LoanPostRequest {
         this.userId = userId;
     }
 
-    public LocalDate getLoanDate() {
-        return loanDate;
+    public Long getBookId() {
+        return bookId;
     }
 
-    public void setLoanDate(LocalDate loanDate) {
-        this.loanDate = loanDate;
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 
-    public LocalDate getReturnDate() {
-        return scheduledReturnDate;
-    }
 
-    public void setReturnDate(LocalDate returnDate) {
-        this.scheduledReturnDate = returnDate;
-    }
 }

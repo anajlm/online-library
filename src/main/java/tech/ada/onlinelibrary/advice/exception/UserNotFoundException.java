@@ -2,5 +2,5 @@ package tech.ada.onlinelibrary.advice.exception;
 
 public class UserNotFoundException extends NullPointerException {
 
-    public UserNotFoundException(String username){ super("Could not find user with username " + username); }
+    public UserNotFoundException(Long id){ super("Could not find user with id: " + id); }
 }

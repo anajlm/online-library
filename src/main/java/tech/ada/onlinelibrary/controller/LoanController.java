@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tech.ada.onlinelibrary.advice.exception.UnauthorizedLoanException;
 import tech.ada.onlinelibrary.domain.Loan;
+import tech.ada.onlinelibrary.domain.User;
 import tech.ada.onlinelibrary.dto.LoanPostRequest;
 import tech.ada.onlinelibrary.dto.LoanReturnDateRequest;
 import tech.ada.onlinelibrary.repository.LoanRepository;
@@ -32,16 +34,16 @@ public class LoanController {
 
 
     @PostMapping("/library/loans")
-    public ResponseEntity<List<Loan>> newLoan(@RequestBody Loan loan) {
-        Long userId = loan.getId();
+    public ResponseEntity<Loan> newLoan(@RequestBody LoanPostRequest loanRequest) {
+        Long userId = loanRequest.getUserId();
 
         boolean isAuthorized = loanService.checkLoanAuthorization(userId);
 
         if (isAuthorized) {
-            loanService.createLoan(loan);
+            loanService.createLoan(loanRequest);
             return ResponseEntity.ok().build();
         } else {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            throw new UnauthorizedLoanException(userId);
         }
     }
 
