@@ -1,5 +1,6 @@
 package tech.ada.onlinelibrary.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Loan {
     private Book book;
 
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     private LocalDate loanDate;

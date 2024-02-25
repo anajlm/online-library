@@ -25,7 +25,7 @@ public class User {
     private String userPassword;
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Loan> loans;
 
     public Long getId() {
