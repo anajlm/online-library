@@ -1,12 +1,16 @@
 package tech.ada.onlinelibrary.controller;
 
 import org.modelmapper.ModelMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.onlinelibrary.domain.Loan;
+import tech.ada.onlinelibrary.dto.LoanPostRequest;
+import tech.ada.onlinelibrary.dto.LoanReturnDateRequest;
 import tech.ada.onlinelibrary.repository.LoanRepository;
+import tech.ada.onlinelibrary.service.LoanService;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,11 +18,13 @@ import java.util.Optional;
 @RestController
 public class LoanController {
 
+    private LoanService loanService;
     private LoanRepository loanRepository;
     private ModelMapper modelMapper;
 
     @Autowired
-    public LoanController(LoanRepository loanRepository, ModelMapper modelMapper){
+    public LoanController(LoanService loanService, LoanRepository loanRepository, ModelMapper modelMapper){
+        this.loanService = loanService;
         this.loanRepository = loanRepository;
         this.modelMapper = modelMapper;
     }
@@ -36,10 +42,20 @@ public class LoanController {
     }
 
     @PostMapping("/library/loans")
-    public ResponseEntity<Loan> createLoan(@RequestBody CreateLoanRequest loanRequest){
+    public ResponseEntity<Loan> createLoan(@RequestBody LoanPostRequest loanRequest){
         Loan loan = modelMapper.map(loanRequest, Loan.class);
         Loan newLoan = loanRepository.save(loan);
         return ResponseEntity.status(HttpStatus.CREATED).body(newLoan);
+    }
+
+    @PostMapping("/library/loans/return")
+    public ResponseEntity<Loan> registerLoanReturn(@RequestBody LoanReturnDateRequest returnDateRequest) {
+        Optional<Loan> loanOpt = loanService.registerLoanReturn(returnDateRequest);
+        if (loanOpt.isPresent()) {
+            return ResponseEntity.ok(loanOpt.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping(value = "/library/loans/{id}")

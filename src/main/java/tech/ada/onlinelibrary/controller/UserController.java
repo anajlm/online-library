@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.onlinelibrary.domain.User;
+import tech.ada.onlinelibrary.dto.UserPostRequest;
 import tech.ada.onlinelibrary.repository.UserRepository;
 import tech.ada.onlinelibrary.service.UserService;
 
@@ -44,7 +45,7 @@ public class UserController {
         }
     }
     @PostMapping("/user/register")
-        public ResponseEntity<User> createUser (@RequestBody CreateUserRequest userRequest){
+        public ResponseEntity<User> createUser (@RequestBody UserPostRequest userRequest){
             User user = modelMapper.map(userRequest, User.class);
             User newUser = userRepository.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
