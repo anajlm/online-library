@@ -42,7 +42,7 @@ public class LoanController {
     }
 
     @PostMapping("/library/loans")
-    public ResponseEntity<Loan> createLoan(@RequestBody LoanPostRequest loanRequest){
+    public ResponseEntity<Loan> createLoan(@RequestBody CreateLoanRequest loanRequest){
         Loan loan = modelMapper.map(loanRequest, Loan.class);
         Loan newLoan = loanRepository.save(loan);
         return ResponseEntity.status(HttpStatus.CREATED).body(newLoan);
