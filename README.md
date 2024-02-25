@@ -15,6 +15,10 @@ Online Library API with Java Spring Boot
 
 ## Features
 
+## Diagram UML
+
+![Texto alternativo](Diagram.png)
+
 ## Technologies Used
 //Tecnologias:
 

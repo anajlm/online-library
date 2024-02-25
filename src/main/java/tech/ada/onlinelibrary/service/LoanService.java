@@ -1,10 +1,12 @@
 package tech.ada.onlinelibrary.service;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.ada.onlinelibrary.domain.Loan;
 import tech.ada.onlinelibrary.repository.LoanRepository;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LoanService {
@@ -39,4 +41,16 @@ public class LoanService {
         loanRepository.save(loan);
     }
 
+    public Optional<Loan> registerLoanReturn(LoanReturnDateRequest returnDateRequest) {
+        Optional<Loan> loanOpt = loanRepository.findById(returnDateRequest.getLoanId());
+
+        if (loanOpt.isPresent()) {
+            Loan loan = loanOpt.get();
+            loan.setRealReturnDate(returnDateRequest.getRealReturnDate());
+            loanRepository.save(loan);
+        }
+
+        return loanOpt;
+    }
+  
 }

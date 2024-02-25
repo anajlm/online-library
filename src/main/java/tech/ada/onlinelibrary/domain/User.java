@@ -1,14 +1,11 @@
 package tech.ada.onlinelibrary.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @Entity
 @Getter
@@ -25,9 +22,5 @@ public class User {
     private String username;
     private String userPassword;
     private String email;
-
-    @OneToMany//(mappedBy = "user", cascade = CascadeType.REMOVE)
-    //@JsonIgnoreProperties("user")
-    private List<Loan> loans;
 
 }
