@@ -22,7 +22,6 @@ public class LoanController {
     private LoanRepository loanRepository;
     private ModelMapper modelMapper;
 
-    private LoanService loanService;
 
     @Autowired
     public LoanController(LoanService loanService, LoanRepository loanRepository, ModelMapper modelMapper){
@@ -56,32 +55,6 @@ public class LoanController {
     public ResponseEntity<List<Loan>> getLoansByUserId(@RequestParam Long userId){
         List<Loan> loans = loanRepository.findByUserId(userId);
         return ResponseEntity.ok(loans);
-    }
-
-
-    @GetMapping(value = "/library/loans", params = {"title"})
-    public ResponseEntity<List<Loan>> getLoansByTitle(@RequestParam String title) {
-        List<Loan> loans1 = loanRepository.findByTitle(title);
-        return ResponseEntity.ok(loans1);
-    }
-
-    @GetMapping(value = "/library/loans", params = {"author"})
-    public ResponseEntity<List<Loan>> getLoansByAuthor(@RequestParam String author) {
-        List<Loan> loans2 = loanRepository.findByAuthor(author);
-        return ResponseEntity.ok(loans2);
-    }
-
-    @GetMapping(value = "/library/loans", params = {"genre"})
-    public ResponseEntity<List<Loan>> getLoansByGenre(@RequestParam String genre) {
-        List<Loan> loans3 = loanRepository.findByGenre(genre);
-        return ResponseEntity.ok(loans3);
-    }
-
-    @PostMapping("/library/loans")
-    public ResponseEntity<Loan> createLoan(@RequestBody LoanPostRequest loanRequest){
-        Loan loan = modelMapper.map(loanRequest, Loan.class);
-        Loan newLoan = loanRepository.save(loan);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newLoan);
     }
 
     @PostMapping("/library/loans/return")

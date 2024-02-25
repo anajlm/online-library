@@ -10,9 +10,5 @@ import java.util.List;
 @Repository
 public interface LoanRepository extends JpaRepository<Loan, Long> {
     List<Loan> findByUserId(Long userId);
-    List<Loan> findByTitle(String titulo);
-    List<Loan> findByAuthor(String author);
-    List<Loan> findByGenre(String author);
-
 
 }

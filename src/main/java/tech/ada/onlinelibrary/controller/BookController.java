@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.onlinelibrary.domain.Book;
+import tech.ada.onlinelibrary.domain.enums.Genre;
 import tech.ada.onlinelibrary.dto.request.CreateBookRequest;
 import tech.ada.onlinelibrary.service.BookService;
 
@@ -15,10 +16,15 @@ public class BookController {
 
     private BookService bookService;
 
-
     @Autowired
     public BookController(BookService bookService) {
         this.bookService = bookService;
+    }
+
+    @GetMapping("/library/books")
+    public ResponseEntity<List<Book>> getAllBooks(){
+        List<Book> books = bookService.getAllBooks();
+        return ResponseEntity.ok(books);
     }
 
     @GetMapping(value = "/library/books", params = {"title"})
@@ -27,8 +33,17 @@ public class BookController {
         return ResponseEntity.ok(books);
     }
 
-    //GET Retrieve book by author.
-    //GET Retrieve book by genre.
+    @GetMapping(value = "/library/books", params = {"author"})
+    public ResponseEntity<List<Book>> getBooksByAuthor(@RequestParam String author) {
+        List<Book> books = bookService.getBooksByAuthor(author);
+        return ResponseEntity.ok(books);
+    }
+
+    @GetMapping(value = "/library/books", params = {"genre"})
+    public ResponseEntity<List<Book>> getBooksByGenre(@RequestParam Genre genre) {
+        List<Book> books = bookService.getBooksByGenre(genre);
+        return ResponseEntity.ok(books);
+    }
 
     @PostMapping("/library/books")
     public ResponseEntity<Book> createBook(@RequestBody CreateBookRequest bookRequest){

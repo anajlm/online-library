@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.ada.onlinelibrary.advice.exception.BookNotFoundException;
 import tech.ada.onlinelibrary.domain.Book;
+import tech.ada.onlinelibrary.domain.enums.Genre;
 import tech.ada.onlinelibrary.dto.request.CreateBookRequest;
 import tech.ada.onlinelibrary.repository.BookRepository;
 
@@ -22,9 +23,22 @@ public class BookService {
         this.modelMapper = modelMapper;
     }
 
+    public List<Book> getAllBooks(){
+        return bookRepository.findAll();
+    }
+
     public List<Book> getBooksByTitle(String title) {
         return bookRepository.findByTitleContainingIgnoreCase(title);
     }
+
+    public List<Book> getBooksByAuthor(String author) {
+        return bookRepository.findByAuthor(author);
+    }
+
+    public List<Book> getBooksByGenre(Genre genre) {
+        return bookRepository.findByGenre(genre);
+    }
+
 
     public Book createBook(CreateBookRequest bookRequest) {
         Book book = modelMapper.map(bookRequest, Book.class);
@@ -39,5 +53,5 @@ public class BookService {
         getBookById(id);
         bookRepository.deleteById(id);
     }
-    
+
 }

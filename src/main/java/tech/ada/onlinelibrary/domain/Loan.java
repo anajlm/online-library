@@ -30,7 +30,6 @@ public class Loan {
 
     private LocalDate realReturnDate;
 
-
     public Long getId() {
         return id;
     }
@@ -55,11 +54,19 @@ public class Loan {
         this.loanDate = loanDate;
     }
 
-    public LocalDate getReturnDate() {
+    public LocalDate getScheduledReturnDate() {
         return scheduledReturnDate;
     }
 
-    public void setReturnDate(LocalDate returnDate) {
-        this.scheduledReturnDate = returnDate;
+    public void setScheduledReturnDate(LocalDate scheduledReturnDate) {
+        this.scheduledReturnDate = scheduledReturnDate;
+    }
+
+    public LocalDate getRealReturnDate() {
+        return realReturnDate;
+    }
+
+    public void setRealReturnDate(LocalDate realReturnDate) {
+        this.realReturnDate = realReturnDate;
     }
 }

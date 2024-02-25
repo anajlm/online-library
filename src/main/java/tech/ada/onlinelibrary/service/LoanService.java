@@ -3,6 +3,7 @@ package tech.ada.onlinelibrary.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.ada.onlinelibrary.domain.Loan;
+import tech.ada.onlinelibrary.dto.LoanReturnDateRequest;
 import tech.ada.onlinelibrary.repository.LoanRepository;
 import java.time.LocalDate;
 import java.util.List;
