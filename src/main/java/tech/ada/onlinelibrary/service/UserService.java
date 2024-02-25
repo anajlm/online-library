@@ -3,7 +3,6 @@ package tech.ada.onlinelibrary.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.ada.onlinelibrary.domain.User;
-import tech.ada.onlinelibrary.exception.UserNotFoundException;
 import tech.ada.onlinelibrary.repository.UserRepository;
 import java.util.Optional;
 
@@ -22,15 +21,19 @@ public class UserService {
     }
 
 
-    public Optional<User> updateUser(User user) {
-        user.setUserPassword(user.getUserPassword());
-        return Optional.of(userRepository.save(user));
-    }
+public Optional<User> updateUser(User user) {
+    user.setUserPassword(user.getUserPassword());
+    return Optional.of(userRepository.save(user));
+}
 
-    public boolean authenticateUser(String username, String password) {
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(username));
-        String storedPassword = user.getUserPassword();
-        return storedPassword.equals(password);
+public boolean authenticateUser(String username, String password) {
+        Optional<User> userOptional = userRepository.findByUsername(username);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            String storedPassword = user.getUserPassword();
+            return storedPassword.equals(password);
+        } else {
+            return false;
+        }
     }
-
 }
