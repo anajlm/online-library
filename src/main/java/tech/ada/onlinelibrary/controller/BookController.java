@@ -5,11 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.onlinelibrary.domain.Book;
-import tech.ada.onlinelibrary.dto.CreateBookRequest;
+import tech.ada.onlinelibrary.dto.request.CreateBookRequest;
 import tech.ada.onlinelibrary.service.BookService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class BookController {
@@ -32,8 +31,8 @@ public class BookController {
 
     @PostMapping("/library/books")
     public ResponseEntity<Book> createBook(@RequestBody CreateBookRequest bookRequest){
-        Book newBook = bookService.createBook(bookRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newBook);
+        Book newbook = bookService.createBook(bookRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newbook);
     }
 
     @DeleteMapping("/library/books/{id}")

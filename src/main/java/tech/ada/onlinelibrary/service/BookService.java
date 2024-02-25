@@ -3,13 +3,12 @@ package tech.ada.onlinelibrary.service;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tech.ada.onlinelibrary.advice.exception.BookNotFoundException;
 import tech.ada.onlinelibrary.domain.Book;
-import tech.ada.onlinelibrary.dto.CreateBookRequest;
-import tech.ada.onlinelibrary.exception.BookNotFoundException;
+import tech.ada.onlinelibrary.dto.request.CreateBookRequest;
 import tech.ada.onlinelibrary.repository.BookRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BookService {
