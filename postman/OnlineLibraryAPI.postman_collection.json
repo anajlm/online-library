@@ -11,40 +11,6 @@
 			"name": "Users",
 			"item": [
 				{
-					"name": "Get all users",
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "12345",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/library/user",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"library",
-								"user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Create new user",
 					"request": {
 						"auth": {
