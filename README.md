@@ -13,51 +13,70 @@ Online Library API with Java Spring Boot
 
 ## Overview
 
+The Online Library API is a Java Spring Boot application designed to manage books, users, and loans in an online library system. It provides endpoints to perform CRUD operations on books, users, and loans, allowing users to browse books, borrow books, and return them. The application is built using modern Java technologies and follows RESTful principles for easy integration with client applications.
+
 ## Features
 
-## Diagram UML
+User Management: Allows adding, updating, and deleting users from the database. Users can register with the system, update their information, and delete their accounts if needed.
 
-![Texto alternativo](Diagram.png)
+Book Management: Provides CRUD (Create, Read, Update, Delete) operations for managing books in the library. Users can add new books to the collection, update book details such as title, author, and genre, and delete books that are no longer in circulation.
+
+Search Functionality: Enables users to search for books based on various criteria such as title, author, or genre. This feature helps users find specific books quickly and efficiently.
+
+Loan System: Facilitates the borrowing process by allowing users to borrow books from the library. Users can view a list of available books, borrow them for a specific duration, and return them once they are done.
+
+Authentication and Authorization: Implements authentication and authorization mechanisms to ensure secure access to the API. Only authenticated users can perform certain actions such as adding or deleting books, while others may be restricted to read-only access.
+
 
 ## Technologies Used
-//Tecnologias:
 
 - Java 17
-- Spring Boot
-- Spring Data JPA
-- Lombok
-- PostgreSQL
 - Maven
+- Spring Boot 
+- PostgreSQL
+- Postman (for testing)
 
 
 ## Technical Implementation
 
+
+This UML diagram illustrates the structure and relationships between the entities within the Online Library project.
+
+![Texto alternativo](Diagram.png)
+
+
 ## Usage
 
-Base URL for each request is `https://localhost:8080/online-library/api`, so combine it with one of the following parts.
+Base URL for each request is `https://localhost:8080/library`, so combine it with one of the following parts.
 
 ### User
 
+Endpoints for managing users, including user registration, authentication, and updating user information.
+
 | Link          | HTTP Method   | Description                                        | 
 | ------------- | ------------- | -------------------------------------------------  |
-| `/users`      | POST          | Add new user to the database.                      |
-| `/users/{id}` | PUT           | Update specific user's (`{id}`) fields.           |
-| `/users/{id}` | DELETE        | Delete from the database user with provided `{id}`. |
+| `/user`      | POST          | Add new user to the database.                      |
+| `/user/{id}` | PUT           | Update specific user's (`{id}`) fields.           |
+| `/user/{id}` | DELETE        | Delete from the database user with provided `{id}`. |
 
 
 ### Book
 
+Endpoints for managing books, including CRUD operations and filtering by title, author, and genre.
+
 | Link          | HTTP Method   | Description                                        | 
 | ------------- | ------------- | -------------------------------------------------  |
 | `/books`      | GET           | Retrieve the list of all books.                    |
-| `/books`      | GET           | Retrieve book by title.                            |
-| `/books`      | GET           | Retrieve book by author.                           |
-| `/books`      | GET           | Retrieve book by genre.    	                |
+| `/books?title={title}`      | GET           | Retrieve book by title.                            |
+| `/books?author={author}`      | GET           | Retrieve book by author.                           |
+| `/books?genre={genre}`      | GET           | Retrieve book by genre.    	                |
 | `/books`      | POST          | Add new book to the database.   	                |
 | `/books/{id}` | DELETE        | Delete book from the database with provided `{id}`.|
 
 
-### Borrowed
+### Loan
+
+Endpoints for managing loans, including borrowing and returning books, and checking loan authorization.
 
 | Link          | HTTP Method   | Description                                        | 
 | ------------- | ------------- | -------------------------------------------------  |
@@ -71,7 +90,13 @@ Base URL for each request is `https://localhost:8080/online-library/api`, so com
 
 ## Dependencies 
 
-The project does not have any external dependencies.
+The project relies on the following dependencies:
+- Spring Boot Starter Web
+- Spring Boot Starter Data JPA
+- Spring Boot Starter Security
+- PostgreSQL Driver
+- Lombok
+
 
 ## Contributing
 

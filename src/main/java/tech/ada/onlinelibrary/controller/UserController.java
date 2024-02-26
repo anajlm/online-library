@@ -32,7 +32,7 @@ public class UserController {
         this.modelMapper = modelMapper;
     }
 
-    @PostMapping("/library/login")
+    @PostMapping("/library/user/login")
     public ResponseEntity<User> login(@RequestBody User userLogin) {
         boolean authenticated = userService.authenticateUser(userLogin.getUsername(), userLogin.getUserPassword());
         if (authenticated) {
