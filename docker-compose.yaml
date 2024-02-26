@@ -1,9 +1,0 @@
-services:
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=library'
-      - 'POSTGRES_PASSWORD=postgres@2024'
-      - 'POSTGRES_USER=postgres'
-    ports:
-      - '5432'
