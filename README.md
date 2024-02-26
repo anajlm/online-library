@@ -119,7 +119,7 @@ Endpoints for managing loans, including borrowing and returning books, and check
 | `/loans`   | POST         | Add new loan to the database.                          |
 | `/loans/return`   | PUT         | Return a loan.                      |
 | `/loans/renewal`   | PUT         | Renew a loan.                      |
-| `/loans/{id}`   | DELETE         | Delete loan from the database with provided id. |
+| `/loans/{id}`   | DELETE         | Delete loan from the database with provided `{id}`. |
 
 
 
