@@ -59,7 +59,7 @@ public class LoanController {
         return ResponseEntity.ok(loans);
     }
 
-    @PostMapping("/library/loans/return")
+    @PutMapping("/library/loans/return")
     public ResponseEntity<Loan> registerLoanReturn(@RequestBody LoanReturnDateRequest returnDateRequest) {
         Optional<Loan> loanOpt = loanService.registerLoanReturn(returnDateRequest);
         if (loanOpt.isPresent()) {
