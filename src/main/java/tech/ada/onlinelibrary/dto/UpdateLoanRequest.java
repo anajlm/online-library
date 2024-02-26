@@ -1,8 +1,6 @@
 package tech.ada.onlinelibrary.dto;
 
-import java.time.LocalDate;
-
-public class LoanReturnDateRequest {
+public class UpdateLoanRequest {
 
     private Long loanId;
 

@@ -5,7 +5,7 @@ import tech.ada.onlinelibrary.domain.enums.Genre;
 import java.time.Year;
 import java.util.Objects;
 
-public class BookPostRequest {
+public class CreateBookRequest {
 
     private String title;
     private String author;
@@ -13,7 +13,7 @@ public class BookPostRequest {
     private String publisher;
     private Year publicationYear;
 
-    public BookPostRequest(String title, String author, Genre genre, String publisher, Year publicationYear) {
+    public CreateBookRequest(String title, String author, Genre genre, String publisher, Year publicationYear) {
         this.title = Objects.requireNonNull(title);
         this.author = Objects.requireNonNull(author);
         this.genre = Objects.requireNonNull(genre);

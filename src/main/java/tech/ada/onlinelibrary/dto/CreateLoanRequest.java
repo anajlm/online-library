@@ -1,20 +1,14 @@
 package tech.ada.onlinelibrary.dto;
 
 
-import tech.ada.onlinelibrary.domain.Book;
-import tech.ada.onlinelibrary.domain.User;
-import tech.ada.onlinelibrary.domain.enums.Genre;
-
-import java.time.LocalDate;
-import java.time.Year;
 import java.util.Objects;
 
-public class LoanPostRequest {
+public class CreateLoanRequest {
 
     private Long userId;
     private Long bookId;
 
-    public LoanPostRequest(Long userId, Long bookId) {
+    public CreateLoanRequest(Long userId, Long bookId) {
         this.userId = Objects.requireNonNull(userId);
         this.bookId = Objects.requireNonNull(bookId);
     }

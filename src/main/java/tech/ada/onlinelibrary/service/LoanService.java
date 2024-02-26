@@ -7,8 +7,8 @@ import tech.ada.onlinelibrary.advice.exception.UserNotFoundException;
 import tech.ada.onlinelibrary.domain.Book;
 import tech.ada.onlinelibrary.domain.Loan;
 import tech.ada.onlinelibrary.domain.User;
-import tech.ada.onlinelibrary.dto.LoanPostRequest;
-import tech.ada.onlinelibrary.dto.LoanReturnDateRequest;
+import tech.ada.onlinelibrary.dto.CreateLoanRequest;
+import tech.ada.onlinelibrary.dto.UpdateLoanRequest;
 import tech.ada.onlinelibrary.repository.BookRepository;
 import tech.ada.onlinelibrary.repository.LoanRepository;
 import tech.ada.onlinelibrary.repository.UserRepository;
@@ -51,7 +51,7 @@ public class LoanService {
         return true;
     }
 
-    public void createLoan(LoanPostRequest loanRequest) {
+    public void createLoan(CreateLoanRequest loanRequest) {
         User user = userRepository.findById(loanRequest.getUserId()).orElseThrow(() -> new UserNotFoundException(loanRequest.getUserId()));
         Book book = bookRepository.findById(loanRequest.getBookId()).orElseThrow(() -> new BookNotFoundException(loanRequest.getBookId()));
         Loan loan = new Loan();
@@ -64,12 +64,24 @@ public class LoanService {
         loanRepository.save(loan);
     }
 
-    public Optional<Loan> registerLoanReturn(LoanReturnDateRequest returnDateRequest) {
+    public Optional<Loan> registerLoanReturn(UpdateLoanRequest returnDateRequest) {
         Optional<Loan> loanOpt = loanRepository.findById(returnDateRequest.getLoanId());
 
         if (loanOpt.isPresent()) {
             Loan loan = loanOpt.get();
             loan.setRealReturnDate(LocalDate.now());
+            loanRepository.save(loan);
+        }
+
+        return loanOpt;
+    }
+
+    public Optional<Loan> returnLoan(UpdateLoanRequest returnDateRequest) {
+        Optional<Loan> loanOpt = loanRepository.findById(returnDateRequest.getLoanId());
+
+        if (loanOpt.isPresent()) {
+            Loan loan = loanOpt.get();
+            loan.setScheduledReturnDate(LocalDate.now().plusDays(7));
             loanRepository.save(loan);
         }
 

@@ -40,9 +40,24 @@ Authentication and Authorization: Implements authentication and authorization me
 ## Technical Implementation
 
 
+### 
+
 This UML diagram illustrates the structure and relationships between the entities within the Online Library project.
 
 ![Texto alternativo](Diagram.png)
+
+
+### Business Rules
+
+Managing loans in the Online Library API follows specific rules to ensure a smooth borrowing experience for users:
+
+- **Single Borrowing**: Each user can only borrow one book at a time, preventing overloading and ensuring fair access to resources.
+
+- **Return Deadline**: Users have a grace period of 7 calendar days from the loan date to return the borrowed book. This allows for flexible reading schedules while ensuring timely circulation of library materials.
+
+- **Renewal Option**: After the initial 7-day period, users can renew their loan for an additional 7 days. This feature accommodates longer reading times and ensures users have uninterrupted access to their chosen books.
+
+- **Suspension Policy**: If a user exceeds the return deadline, they receive a temporary suspension from borrowing books for 15 days after returning the overdue book. This policy encourages timely returns and ensures equitable access to library resources for all users.
 
 
 ## Usage
@@ -55,8 +70,9 @@ Endpoints for managing users, including user registration, authentication, and u
 
 | Link          | HTTP Method   | Description                                        | 
 | ------------- | ------------- | -------------------------------------------------  |
-| `/user`      | POST          | Add new user to the database.                      |
-| `/user/{id}` | PUT           | Update specific user's (`{id}`) fields.           |
+| `/user/login`      | POST          | Authenticate user.                      |
+| `/user/register`      | POST          | Add new user to the database.                      |
+| `/user/update` | PUT           | Update specific user's (`{id}`) fields.           |
 | `/user/{id}` | DELETE        | Delete from the database user with provided `{id}`. |
 
 
@@ -83,6 +99,8 @@ Endpoints for managing loans, including borrowing and returning books, and check
 | `/loans`      | GET           | Retrieve the list of all loans.                    |
 | `/loans/{userId}`| GET         | Retrieve list of borrowed books that are assigned to the user. |
 | `/loans`   | POST         | Add new loan to the database.                          |
+| `/loans/return`   | PUT         | Return a loan.                      |
+| `/loans/renewal`   | PUT         | Renew a loan.                      |
 | `/loans/{id}`   | DELETE         | Delete loan from the database with provided id. |
 
 

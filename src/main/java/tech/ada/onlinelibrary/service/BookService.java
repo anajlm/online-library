@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import tech.ada.onlinelibrary.advice.exception.BookNotFoundException;
 import tech.ada.onlinelibrary.domain.Book;
 import tech.ada.onlinelibrary.domain.enums.Genre;
-import tech.ada.onlinelibrary.dto.BookPostRequest;
+import tech.ada.onlinelibrary.dto.CreateBookRequest;
 import tech.ada.onlinelibrary.repository.BookRepository;
 
 import java.util.List;
@@ -40,7 +40,7 @@ public class BookService {
     }
 
 
-    public Book createBook(BookPostRequest bookRequest) {
+    public Book createBook(CreateBookRequest bookRequest) {
         Book book = modelMapper.map(bookRequest, Book.class);
         return bookRepository.save(book);
     }

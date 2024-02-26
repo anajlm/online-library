@@ -3,14 +3,12 @@ package tech.ada.onlinelibrary.controller;
 import org.modelmapper.ModelMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.onlinelibrary.advice.exception.UnauthorizedLoanException;
 import tech.ada.onlinelibrary.domain.Loan;
-import tech.ada.onlinelibrary.domain.User;
-import tech.ada.onlinelibrary.dto.LoanPostRequest;
-import tech.ada.onlinelibrary.dto.LoanReturnDateRequest;
+import tech.ada.onlinelibrary.dto.CreateLoanRequest;
+import tech.ada.onlinelibrary.dto.UpdateLoanRequest;
 import tech.ada.onlinelibrary.repository.LoanRepository;
 import tech.ada.onlinelibrary.service.LoanService;
 
@@ -34,7 +32,7 @@ public class LoanController {
 
 
     @PostMapping("/library/loans")
-    public ResponseEntity<Loan> newLoan(@RequestBody LoanPostRequest loanRequest) {
+    public ResponseEntity<Loan> newLoan(@RequestBody CreateLoanRequest loanRequest) {
         Long userId = loanRequest.getUserId();
 
         boolean isAuthorized = loanService.checkLoanAuthorization(userId);
@@ -60,8 +58,18 @@ public class LoanController {
     }
 
     @PutMapping("/library/loans/return")
-    public ResponseEntity<Loan> registerLoanReturn(@RequestBody LoanReturnDateRequest returnDateRequest) {
-        Optional<Loan> loanOpt = loanService.registerLoanReturn(returnDateRequest);
+    public ResponseEntity<Loan> registerLoanReturn(@RequestBody UpdateLoanRequest loanRequest) {
+        Optional<Loan> loanOpt = loanService.registerLoanReturn(loanRequest);
+        if (loanOpt.isPresent()) {
+            return ResponseEntity.ok(loanOpt.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/library/loans/renewal")
+    public ResponseEntity<Loan> renewLoan(@RequestBody UpdateLoanRequest loanRequest) {
+        Optional<Loan> loanOpt = loanService.returnLoan(loanRequest);
         if (loanOpt.isPresent()) {
             return ResponseEntity.ok(loanOpt.get());
         } else {
