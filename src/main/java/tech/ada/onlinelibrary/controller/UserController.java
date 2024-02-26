@@ -32,11 +32,6 @@ public class UserController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping ("/library/user")
-    public ResponseEntity <List<User>> getAll(){
-        return ResponseEntity.ok(userRepository.findAll());
-    }
-
     @PostMapping("/library/login")
     public ResponseEntity<User> login(@RequestBody User userLogin) {
         boolean authenticated = userService.authenticateUser(userLogin.getUsername(), userLogin.getUserPassword());
