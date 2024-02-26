@@ -69,7 +69,7 @@ public class LoanController {
 
     @PutMapping("/library/loans/renewal")
     public ResponseEntity<Loan> renewLoan(@RequestBody UpdateLoanRequest loanRequest) {
-        Optional<Loan> loanOpt = loanService.returnLoan(loanRequest);
+        Optional<Loan> loanOpt = loanService.renewLoan(loanRequest);
         if (loanOpt.isPresent()) {
             return ResponseEntity.ok(loanOpt.get());
         } else {

@@ -76,7 +76,7 @@ public class LoanService {
         return loanOpt;
     }
 
-    public Optional<Loan> returnLoan(UpdateLoanRequest returnDateRequest) {
+    public Optional<Loan> renewLoan(UpdateLoanRequest returnDateRequest) {
         Optional<Loan> loanOpt = loanRepository.findById(returnDateRequest.getLoanId());
 
         if (loanOpt.isPresent()) {
