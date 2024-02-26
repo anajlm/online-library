@@ -17,15 +17,15 @@ The Online Library API is a Java Spring Boot application designed to manage book
 
 ## Features
 
-User Management: Allows adding, updating, and deleting users from the database. Users can register with the system, update their information, and delete their accounts if needed.
+- **User Management**: Allows adding, updating, and deleting users from the database. Users can register with the system, update their information, and delete their accounts if needed.
 
-Book Management: Provides CRUD (Create, Read, Update, Delete) operations for managing books in the library. Users can add new books to the collection, update book details such as title, author, and genre, and delete books that are no longer in circulation.
+- **Book Management**: Provides CRUD (Create, Read, Update, Delete) operations for managing books in the library. Users can add new books to the collection, update book details such as title, author, and genre, and delete books that are no longer in circulation.
 
-Search Functionality: Enables users to search for books based on various criteria such as title, author, or genre. This feature helps users find specific books quickly and efficiently.
+- **Search Functionality**: Enables users to search for books based on various criteria such as title, author, or genre. This feature helps users find specific books quickly and efficiently.
 
-Loan System: Facilitates the borrowing process by allowing users to borrow books from the library. Users can view a list of available books, borrow them for a specific duration, and return them once they are done.
+- **Loan System**: Facilitates the borrowing process by allowing users to borrow books from the library. Users can view a list of available books, borrow them for a specific duration, and return them once they are done.
 
-Authentication and Authorization: Implements authentication and authorization mechanisms to ensure secure access to the API. Only authenticated users can perform certain actions such as adding or deleting books, while others may be restricted to read-only access.
+- **Authentication and Authorization**: Implements authentication and authorization mechanisms to ensure secure access to the API. Only authenticated users can perform certain actions such as adding or deleting books, while others may be restricted to read-only access.
 
 
 ## Technologies Used
@@ -40,7 +40,7 @@ Authentication and Authorization: Implements authentication and authorization me
 ## Technical Implementation
 
 
-### 
+### Entities
 
 This UML diagram illustrates the structure and relationships between the entities within the Online Library project.
 
@@ -53,18 +53,35 @@ Managing loans in the Online Library API follows specific rules to ensure a smoo
 
 - **Single Borrowing**: Each user can only borrow one book at a time, preventing overloading and ensuring fair access to resources.
 
-- **Return Deadline**: Users have a grace period of 7 calendar days from the loan date to return the borrowed book. This allows for flexible reading schedules while ensuring timely circulation of library materials.
+- **Return Deadline**: Users have a grace period of 7 calendar days from the loan date to return the borrowed book.
 
-- **Renewal Option**: After the initial 7-day period, users can renew their loan for an additional 7 days. This feature accommodates longer reading times and ensures users have uninterrupted access to their chosen books.
+- **Renewal Option**: After the initial 7-day period, users can renew their loan for an additional 7 days. 
 
-- **Suspension Policy**: If a user exceeds the return deadline, they receive a temporary suspension from borrowing books for 15 days after returning the overdue book. This policy encourages timely returns and ensures equitable access to library resources for all users.
+- **Suspension Policy**: If a user exceeds the return deadline, they receive a temporary suspension from borrowing books for 15 days after returning the overdue book. 
 
 
 ## Usage
 
+
+### Database Configuration:
+
+- Ensure that PostgreSQL is installed on your system.
+- Create a new database for the Online Library API.
+- Open the `application.properties` file in the `src/main/resources` directory.
+- Update the database connection details:
+
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+spring.jpa.hibernate.ddl-auto=update
+```
+
+### Making Requests
+
 Base URL for each request is `https://localhost:8080/library`, so combine it with one of the following parts.
 
-### User
+#### User
 
 Endpoints for managing users, including user registration, authentication, and updating user information.
 
@@ -76,7 +93,7 @@ Endpoints for managing users, including user registration, authentication, and u
 | `/user/{id}` | DELETE        | Delete from the database user with provided `{id}`. |
 
 
-### Book
+#### Book
 
 Endpoints for managing books, including CRUD operations and filtering by title, author, and genre.
 
@@ -90,7 +107,7 @@ Endpoints for managing books, including CRUD operations and filtering by title, 
 | `/books/{id}` | DELETE        | Delete book from the database with provided `{id}`.|
 
 
-### Loan
+#### Loan
 
 Endpoints for managing loans, including borrowing and returning books, and checking loan authorization.
 
@@ -105,10 +122,10 @@ Endpoints for managing loans, including borrowing and returning books, and check
 
 
 
-
 ## Dependencies 
 
 The project relies on the following dependencies:
+
 - Spring Boot Starter Web
 - Spring Boot Starter Data JPA
 - Spring Boot Starter Security
