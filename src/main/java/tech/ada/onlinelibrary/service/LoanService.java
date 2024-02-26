@@ -81,8 +81,12 @@ public class LoanService {
 
         if (loanOpt.isPresent()) {
             Loan loan = loanOpt.get();
-            loan.setScheduledReturnDate(LocalDate.now().plusDays(7));
-            loanRepository.save(loan);
+            LocalDate currentDate = LocalDate.now();
+
+            if(loan.getRealReturnDate() == null && currentDate.isBefore(loan.getScheduledReturnDate())) {
+                loan.setScheduledReturnDate(currentDate.plusDays(7));
+                loanRepository.save(loan);
+            }
         }
 
         return loanOpt;
