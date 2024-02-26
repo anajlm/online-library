@@ -89,8 +89,9 @@ Endpoints for managing users, including user registration, authentication, and u
 | ------------- | ------------- | -------------------------------------------------  |
 | `/user/login`      | POST          | Authenticate user.                      |
 | `/user/register`      | POST          | Add new user to the database.                      |
-| `/user/update` | PUT           | Update specific user's (`{id}`) fields.           |
+| `/user/update` | PUT           | Update specific user's fields.           |
 | `/user/{id}` | DELETE        | Delete from the database user with provided `{id}`. |
+| `/user/{id}/loans` | GET        | Retrieve the loans associated with a specific user identified by their `{id}`. |
 
 
 #### Book
